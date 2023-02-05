@@ -82,4 +82,22 @@ public class ProductTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void searchByTwoBookTest() {
+        RepositoryProduct repo = new RepositoryProduct();
+        Book book = new Book("Пушкин");
+        Book book2 = new Book("Пушкин А.С.");
+        Smartphone smartphone = new Smartphone("Xiaomi");
+        repo.save(book);
+        repo.save(book2);
+        repo.save(smartphone);
+        ProductManager productManager = new ProductManager(repo);
+        productManager.searchBy("Пушкин");
+
+        Product[] expected = {book, book2};
+        Product[] actual = productManager.searchBy("Пушкин");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }

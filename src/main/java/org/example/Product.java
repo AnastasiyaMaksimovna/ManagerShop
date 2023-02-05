@@ -17,9 +17,7 @@ public class Product {
         return name;
     }
 
-    public Product (String name) {
-        this.name = name;
+    public Product() {
     }
-    public Product(){}
 }
 
