@@ -35,6 +35,27 @@ public class ProductTest {
     }
 
     @Test
+    public void NotFoundExceptionTest() {
+        RepositoryProduct repo = new RepositoryProduct();
+        Book book = new Book();
+        Smartphone smartphone = new Smartphone();
+        book.setId(5);
+        smartphone.setId(45);
+        repo.save(smartphone);
+        repo.save(book);
+        String actual = new String();
+        try {
+            repo.delete(550);
+        } catch (NotFoundException e) {
+            actual = e.getMessage();
+        }
+
+        String expected = "ID не найден:" + 550;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void repoTest() {
         RepositoryProduct repo = new RepositoryProduct();
         Book book = new Book();
