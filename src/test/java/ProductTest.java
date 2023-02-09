@@ -43,16 +43,10 @@ public class ProductTest {
         smartphone.setId(45);
         repo.save(smartphone);
         repo.save(book);
-        String actual = new String();
-        try {
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
             repo.delete(550);
-        } catch (NotFoundException e) {
-            actual = e.getMessage();
-        }
-
-        String expected = "ID не найден:" + 550;
-
-        Assertions.assertEquals(expected, actual);
+        });
     }
 
     @Test
