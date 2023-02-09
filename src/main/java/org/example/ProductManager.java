@@ -1,12 +1,12 @@
 package org.example;
 
 public class ProductManager {
+    protected RepositoryProduct repositoryProduct;
+
     public ProductManager(RepositoryProduct repositoryProduct) {
         this.repositoryProduct = repositoryProduct;
 
     }
-
-    protected RepositoryProduct repositoryProduct;
 
     public void add(Product product) {
         repositoryProduct.save(product);
